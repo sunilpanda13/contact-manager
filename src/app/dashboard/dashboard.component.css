@@ -1,0 +1,12 @@
+#card{
+    border-radius: 15px;
+    height: 600px;
+    background-color: #00188e;
+    overflow: auto;
+}
+
+#display{
+    padding-block: 100px;
+    padding-inline: 50px;
+    overflow: auto;
+}

@@ -1,0 +1,37 @@
+<div class="card login-form text-white card-bg">
+  <div class="card-body">
+    <h3 class="card-title text-center">Sign in</h3>
+    <div class="card-body">
+      <div [class]="isError?'alert alert-danger':'d-none'" class="my-4">{{message}}</div>
+      <div [class]="isSuccess?'alert alert-success':'d-none'" class="my-4">{{message}}</div>
+      <form #signForm="ngForm" (ngSubmit)="onSignIn()">
+        <div class="form-group mt-2">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" #email="ngModel" name="email" id="email"
+            [class.is-invalid]="email.errors && email.touched" required [(ngModel)]="userEmail" email pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+          <div *ngIf="email.errors && email.touched">
+            <div class="text-danger" *ngIf="email.errors.required || (email.errors?.pattern || email.errors?.email)">
+              Enter valid email
+            </div>
+          </div>
+        </div>
+        <div class="form-group mt-2">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" #password="ngModel" name="password" id="password"
+            [class.is-invalid]="password.errors && password.touched" required [(ngModel)]="userPassword" minlength="8">
+          <div *ngIf="password.errors && password.touched">
+            <div class="text-danger" *ngIf="password.errors.required">
+              Enter valid password
+            </div>
+          </div>
+        </div>
+        <div class="form-group text-center mt-2">
+          <button [disabled]="signForm.form.invalid" class="btn btn-primary btn-block">Sign in</button>
+        </div>
+        <div class="sign-up">
+          Don't have an account? <a routerLink="/register">Create One</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

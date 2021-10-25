@@ -1,0 +1,28 @@
+<table class="table">
+  <thead>
+    <tr class="text-white">
+      <th scope="col">Name</th>
+      <th scope="col">Phone</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="text-white" *ngFor="let contact of contactData;">
+      <td>{{contact.name}}</td>
+      <td>{{contact.phone}}</td>
+      <td>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <a routerLink="/contact/update/{{contact._id}}" class="btn btn-success btn-sm" type="button" title="Edit">Edit</a>
+          </li>
+          <li class="list-inline-item">
+            <button class="btn btn-danger btn-sm" type="button" title="Delete" (click)="onDelete(contact)">Delete</button>
+          </li>
+          <li class="list-inline-item">
+            <button class="btn btn-info btn-sm" type="button" title="Delete" (click)=onView(contact)>View</button>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
